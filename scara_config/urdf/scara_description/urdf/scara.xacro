@@ -1,0 +1,152 @@
+<?xml version="1.0" ?>
+<robot name="scara" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find scara_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find scara_description)/urdf/scara.trans" />
+<xacro:include filename="$(find scara_description)/urdf/scara.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin xyz="0.12898210621867426 0.1028129499778276 0.3800243277084152" rpy="0 0 0"/>
+    <mass value="192.61152500000009"/>
+    <inertia ixx="12.891145" iyy="13.714337" izz="2.144752" ixy="0.001045" iyz="-0.017315" ixz="-0.014626"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://scara_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://scara_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link1_1">
+  <inertial>
+    <origin xyz="-3.7976791045224445e-07 -0.15497006523662554 0.0043939352168283485" rpy="0 0 0"/>
+    <mass value="29.47250695359581"/>
+    <inertia ixx="0.300227" iyy="0.059546" izz="0.312927" ixy="0.0" iyz="0.01563" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.12554 -0.196237 -0.437082" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://scara_description/meshes/link1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.12554 -0.196237 -0.437082" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://scara_description/meshes/link1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link2_1">
+  <inertial>
+    <origin xyz="-3.7976791031346657e-07 -0.1456549328627304 -0.07795021786375345" rpy="0 0 0"/>
+    <mass value="39.847312972303484"/>
+    <inertia ixx="0.565311" iyy="0.084594" izz="0.573499" ixy="-0.0" iyz="-0.002335" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.12554 0.103763 -0.439582" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://scara_description/meshes/link2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.12554 0.103763 -0.439582" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://scara_description/meshes/link2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link3_1">
+  <inertial>
+    <origin xyz="-3.7976790909222125e-07 -0.14565493286273024 -0.07795021786375406" rpy="0 0 0"/>
+    <mass value="39.84731297230351"/>
+    <inertia ixx="0.565311" iyy="0.084594" izz="0.573499" ixy="0.0" iyz="-0.002335" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.12554 0.403763 -0.332582" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://scara_description/meshes/link3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.12554 0.403763 -0.332582" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://scara_description/meshes/link3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="tool0_1">
+  <inertial>
+    <origin xyz="-3.797679083705763e-07 3.89078758655792e-07 -0.027982578325312507" rpy="0 0 0"/>
+    <mass value="1.9309956324922333"/>
+    <inertia ixx="0.001577" iyy="0.001577" izz="0.002667" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.12554 0.703763 -0.225582" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://scara_description/meshes/tool0_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.12554 0.703763 -0.225582" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://scara_description/meshes/tool0_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="joint1" type="prismatic">
+  <origin xyz="0.12554 0.196237 0.437082" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="link1_1"/>
+  <axis xyz="0.0 -0.0 1.0"/>
+  <limit upper="0.265" lower="-0.1" effort="100" velocity="100"/>
+</joint>
+
+<joint name="joint2" type="revolute">
+  <origin xyz="0.0 -0.3 0.0025" rpy="0 0 0"/>
+  <parent link="link1_1"/>
+  <child link="link2_1"/>
+  <axis xyz="0.0 0.0 -1.0"/>
+  <limit upper="1.745329" lower="-1.745329" effort="100" velocity="100"/>
+</joint>
+
+<joint name="joint3" type="revolute">
+  <origin xyz="0.0 -0.3 -0.107" rpy="0 0 0"/>
+  <parent link="link2_1"/>
+  <child link="link3_1"/>
+  <axis xyz="0.0 0.0 -1.0"/>
+  <limit upper="2.356194" lower="-2.356194" effort="100" velocity="100"/>	
+</joint>
+
+<joint name="joint4" type="revolute">
+  <origin xyz="0.0 -0.3 -0.107" rpy="0 0 0"/>
+  <parent link="link3_1"/>
+  <child link="tool0_1"/>
+  <axis xyz="0.0 0.0 -1.0"/>
+  <limit upper="2.617994" lower="-2.617994" effort="100" velocity="100"/>
+</joint>
+
+<link name="world"/>
+
+<joint name="world_to_base_link" type="fixed">
+  <parent link="world"/>
+  <child link="base_link"/>
+  <origin xyz="0 0 0" rpy="0 0 0"/>
+</joint>
+
+</robot>
